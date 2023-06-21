@@ -25,6 +25,24 @@ const DisplayAll = () => {
             console.log(err.res)
     });
     }, []);
+
+    //Delete Author
+    const deleteAuthor = (id) => {
+        axios
+        .delete(`http://localhost:8000/api/authors/${id}`)
+        .then((res) => {
+            setAllAuthors(res.data);
+            console.log(res.data);
+            // Set and return filtered list
+            const filteredAuthors = allAuthors.filter(
+                (author, index) => author._id!== id)
+                setAllAuthors(filteredAuthors);
+        })
+        .catch((err) => {
+            console.log(err.res)
+    });
+    };
+
     return (
         <div className='App'>
             <div><Link to={'/new'}>Add Author</Link></div>
@@ -45,7 +63,9 @@ const DisplayAll = () => {
                                     <Link to={`/edit/${author._id}`}>
                                         <button className='button'>Edit</button>
                                     </Link>
-                                    <button className='button'>Delete</button>
+                                    <Link to={`/delete/${author._id}`}>
+                                    <button className='button' onClick={() => deleteAuthor(author._id)}>Delete</button>
+                                    </Link>
                                 </td>
                             </tr>
                             )

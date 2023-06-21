@@ -4,38 +4,38 @@ const Author = require('../models/authors.model');
 
 // Declare then export the createAuthor function
 const createAuthor = (req, res) => {
-  Author.create(req.body)
+    Author.create(req.body)
     .then(newAuthor => {
-      res.json({ newAuthor });
+        res.json({ newAuthor });
     })
     .catch((err) => {
-      res.status(400).json({ err });
+        res.status(400).json({ err });
     });
 };
 
 // Create Get all Authors
 const getAllAuthors = (req, res) => {
-  Author.find()
+    Author.find()
     .then((allAuthors) => {
-      res.json(allAuthors);
-      console.log(allAuthors);
+        res.json(allAuthors);
+        console.log(allAuthors);
     })
     .catch((err) => {
-      res.status(400).json({ err });
-      console.log(err);
+        res.status(400).json({ err });
+        console.log(err);
     });
 };
 
 // Create Get Author by ID
 const getAuthorById = (req, res) => {
-  Author.findById(req.params.id)
+    Author.findById(req.params.id)
     .then((author) => {
-      res.json(author);
-      console.log(author);
+        res.json(author);
+        console.log(author);
     })
     .catch((err) => {
-      res.status(400).json({ err });
-      console.log(err);
+        res.status(400).json({ err });
+        console.log(err);
     });
 };
 

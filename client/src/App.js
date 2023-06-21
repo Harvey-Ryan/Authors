@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import DisplayAll from './components/DisplayAll';
 import NewAuthorForm from './components/AuthorForm';
 import EditAuthor from './components/EditAuthor';
+import DeleteAuthor from './components/DisplayAll';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={ <DisplayAll /> } />
           <Route path="/new" element={ <NewAuthorForm /> } />
           <Route path="/edit/:id" element={ <EditAuthor /> } />
+          <Route path="/delete/:id" element={ <DeleteAuthor /> } />
         </Routes>
       </Router>
     </div>

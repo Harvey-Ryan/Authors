@@ -9,6 +9,7 @@ const EditAuthor = (props) => {
     const navigate = useNavigate();
     const { id } = useParams();
     const [authorName, setAuthorName] = useState(""); //Use String to hold the name
+    const [authorNotFound, setAuthorNotFound] = useState("");
 
     useEffect(() => {
     axios
@@ -19,6 +20,7 @@ const EditAuthor = (props) => {
         })
         .catch((err) => {
         console.log(err.response);
+        setAuthorNotFound('Author ID not found');
         });
     }, [id]);
 
@@ -38,6 +40,8 @@ const EditAuthor = (props) => {
 
     return (
     <form onSubmit={handleSubmit}>
+        {authorNotFound ? <p>{authorNotFound} <Link to="/new">CLICK HERE TO ADD AUTHOR</Link> </p> : null}
+        <Link to="/">Home</Link>
         <div className="form-group">
             <label htmlFor="name">Name</label>
             <input 
